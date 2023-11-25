@@ -12,7 +12,7 @@ export const EditProfile = () => {
     last_name: "",
     email: "",
     password: "",
-    address: ""
+    address: "",
   });
 
   const [editableUser, setEditableUser] = useState({
@@ -20,7 +20,7 @@ export const EditProfile = () => {
     last_name: "",
     email: "",
     password: "",
-    address: ""
+    address: "",
   });
 
   const [updateSuccess, setUpdateSuccess] = useState(false);
@@ -36,8 +36,8 @@ export const EditProfile = () => {
         const response = await fetch(process.env.BACKEND_URL + "/profile", {
           method: "GET",
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("jwt-token")}`
-          }
+            Authorization: `Bearer ${localStorage.getItem("jwt-token")}`,
+          },
         });
         if (response.status === 401) {
           navigate("/login");
@@ -51,14 +51,14 @@ export const EditProfile = () => {
           last_name: data.last_name,
           email: data.email,
           address: data.address,
-          password: data.password
+          password: data.password,
         });
         setEditableUser({
           name: data.name,
           last_name: data.last_name,
           email: data.email,
           address: data.address,
-          password: data.password
+          password: data.password,
         });
       } catch (error) {
         console.error("Error fetching dashboard data:", error);
@@ -72,7 +72,7 @@ export const EditProfile = () => {
     const { name, value } = e.target;
     setEditableUser((prevUser) => ({
       ...prevUser,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -82,9 +82,9 @@ export const EditProfile = () => {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("jwt-token")}`
+          Authorization: `Bearer ${localStorage.getItem("jwt-token")}`,
         },
-        body: JSON.stringify(editableUser)
+        body: JSON.stringify(editableUser),
       });
 
       if (response.status === 401) {
@@ -108,77 +108,70 @@ export const EditProfile = () => {
   return (
     <div className="container-fluid">
       <div className="row principal-recipes">
-      <div className="p-0 m-0 col-md-4 col-lg-2" id="reduccion">
+        <div className="p-0 m-0 col-md-4 col-lg-2" id="reduccion">
           <AlmaCenaSidebar />
         </div>
         <div className="col-md-8 col-lg-10" id="reduccion-uno">
           <div className="row principal">
             <div className="col gris">
-              
-
               <div className="row info">
-                  <div className="col-11">
-                    <h4 className="personal" id="titulo-informacion">Personal information</h4>
-                  </div>
-                  <div className="col-1">
-                    <Link to="/dashboard/profile">
-                      <i className="fa-solid fa-arrow-left fa-2xl icono-personal"></i>{" "}
-                    </Link>
-                  </div>
-                  <div className="col-12">
-                 
-                  </div>
+                <div className="col-11">
+                  <h4 className="personal" id="titulo-informacion">
+                    Personal information
+                  </h4>
                 </div>
+                <div className="col-1">
+                  <Link to="/dashboard/profile">
+                    <i className="fa-solid fa-arrow-left fa-2xl icono-personal"></i>{" "}
+                  </Link>
+                </div>
+                <div className="col-12"></div>
+              </div>
 
               <form className="profile-user bg-white">
-               
-              <div className="row foto">
-              <div className="col-sm-12 col-md-4 col-lg-2">
-                <img className="perfil" src="https://res.cloudinary.com/dq5gjc26f/image/upload/v1700657797/perfil_ho6n7m.png" />
-              </div>
-            </div> 
+                <div className="row foto">
+                  <div className="col-sm-12 col-md-4 col-lg-2">
+                    <img
+                      className="perfil"
+                      src="https://res.cloudinary.com/dq5gjc26f/image/upload/v1700657797/perfil_ho6n7m.png"
+                    />
+                  </div>
+                </div>
 
                 <div className="mb-3">
-                {updateSuccess && (
-                <div className="alert alert-success">
-                  Sus datos han sido actualizados correctamente
-                </div>
-              )}
-               
+                  {updateSuccess && (
+                    <div className="alert alert-success">
+                      Sus datos han sido actualizados correctamente
+                    </div>
+                  )}
 
                   <div className="row">
                     <div className="col-sm-12 col-md-6 mb-3">
-                      <label className="form-label">
-                        Name
-                      </label>
+                      <label className="form-label">Name</label>
                       <input
                         type="text"
                         className="form-control"
                         id="name"
                         placeholder="Your Name"
                         value={editableUser.name}
-                        onChange={handleInputChange} 
+                        onChange={handleInputChange}
                         name="name"
                       />
                     </div>
                     <div className="col-sm-12 col-md-6 mb-3">
-                      <label className="form-label">
-                        Last Name
-                      </label>
+                      <label className="form-label">Last Name</label>
                       <input
                         type="text"
                         className="form-control"
                         id="last_name"
                         placeholder="Your Last Name"
                         value={editableUser.last_name}
-                        onChange={handleInputChange} 
+                        onChange={handleInputChange}
                         name="last_name"
                       />
                     </div>
                     <div className="col-sm-12 col-md-6 mb-3">
-                      <label className="form-label">
-                        Email
-                      </label>
+                      <label className="form-label">Email</label>
                       <input
                         type="email"
                         className="form-control"
@@ -187,13 +180,10 @@ export const EditProfile = () => {
                         value={editableUser.email}
                         readOnly
                         disabled
-                      
                       />
                     </div>
                     <div className="col-sm-12 col-md-6 mb-3">
-                      <label className="form-label">
-                        Address
-                      </label>
+                      <label className="form-label">Address</label>
                       <input
                         type="text"
                         className="form-control"
@@ -240,9 +230,6 @@ export const EditProfile = () => {
                   </button>
                 </div>
               </form>
-
-            
-
             </div>
           </div>
         </div>

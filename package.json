@@ -76,8 +76,6 @@
 	},
 	"dependencies": {
 		"@babel/eslint-parser": "^7.23.3",
-		"@fortawesome/free-brands-svg-icons": "^6.4.2",
-		"@fortawesome/react-fontawesome": "^0.2.0",
 		"prop-types": "^15.6.1",
 		"react": "^16.14.0",
 		"react-dom": "^16.8.4",
