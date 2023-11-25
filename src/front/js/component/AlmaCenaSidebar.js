@@ -2,8 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/sidebar.css";
-import logo from "../../img/logoalmacena.png";
-import userprofile from "../../img/userprofile.png";
 import LogoutButton from './LogoutButton';
 
 const AlmaCenaSidebar = () => {
@@ -67,7 +65,7 @@ const AlmaCenaSidebar = () => {
       <div className="nuevoside" id="navegacion-vertical">
         <div className="menuverticallogo">
           <Link to="/dashboard">
-            <img className="logosidebar" src={logo} alt="" />
+            <img className="logosidebar" src="https://res.cloudinary.com/dq5gjc26f/image/upload/v1700657795/logoalmacena_sydhl9.png" alt="logo" />
           </Link>
         </div>
 
@@ -75,7 +73,7 @@ const AlmaCenaSidebar = () => {
           <div className="table-responsive usuario-registrado">
           <table>
             <tr>
-              <th rowSpan="2" className="imagen-usuario"><img src={userprofile} alt="" /></th>
+              <th rowSpan="2" className="imagen-usuario"><img src="https://res.cloudinary.com/dq5gjc26f/image/upload/v1700657799/userprofile_g49rfq.png" alt="imglogo" /></th>
               <td colSpan="2" className="info-usuario-registrado"><Link className="enlace-user" to="/dashboard/profile"> {user.name} {user.last_name} </Link></td>
             </tr>
             <tr>

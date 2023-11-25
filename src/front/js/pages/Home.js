@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext.js";
 import "../../styles/home.css";
-import hojas from "../../img/hojas.png";
 
 import { MenuNavegacion } from "../component/AlmaCenaNavbar.js";
 
@@ -49,7 +48,7 @@ export const Home = () => {
 			</div>
 
 			{/* contenedor recetas */}
-			<div className="recipes container-fluid" style={{ backgroundImage: `url(${hojas})` }}>
+			<div className="recipes container-fluid" style={{ backgroundImage: `url(https://res.cloudinary.com/dq5gjc26f/image/upload/v1700657793/hojas_oqq8bn.png)` }}>
 				{/* style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/hojas.png'})` }} */}
 				<div className="texto_uno">
 					<h2>Save your <br /> recipes</h2>

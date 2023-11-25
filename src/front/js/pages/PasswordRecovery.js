@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Alert } from "react-bootstrap";
 import "../../styles/login.css";
 import { Link } from "react-router-dom";
-import recipes from "../../img/recipes.png";
 
 export const PasswordRecovery = () => {
   const [email, setEmail] = useState("");
@@ -99,7 +98,7 @@ export const PasswordRecovery = () => {
         {/* Columna derecha */}
         <div
           className="col muestra"
-          style={{ backgroundImage: `url(${recipes})` }}
+          style={{ backgroundImage: `url(https://res.cloudinary.com/dq5gjc26f/image/upload/v1700657797/recipes_nawqzs.png)` }}
         ></div>
       </div>
     </div>

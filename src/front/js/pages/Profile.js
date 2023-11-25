@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../styles/profile.css";
-import perfil from "../../img/perfil.png";
 import AlmaCenaSidebar from "../component/AlmaCenaSidebar";
 import { Link } from "react-router-dom";
 
@@ -76,7 +75,7 @@ export const Profile = () => {
 
                <div className="row foto">
               <div className="col-sm-12 col-md-4 col-lg-2" >
-                <img className="perfil" src={perfil} />
+                <img className="perfil" src="https://res.cloudinary.com/dq5gjc26f/image/upload/v1700657797/perfil_ho6n7m.png" />
               </div>
             </div> 
 

@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import AlmaCenaSidebar from "../component/AlmaCenaSidebar";
 import { Container, Card, Button, Row, Col } from "react-bootstrap";
 import "../../styles/myproducts.css";
-import redvelvet from "../../img/redvelvet.png";
 import CreateRecipeButton from "../component/CreateRecipeButton";
 import DeleteRecipeButton from "../component/DeleteRecipeButton";
 
@@ -89,7 +88,7 @@ const Recipes = () => {
                 {recipes.map((recipe) => (
                   <Col key={recipe.receta_id}>
                     <Card>
-                      <Card.Img variant="top" src={redvelvet} />
+                      <Card.Img variant="top" src="https://res.cloudinary.com/dq5gjc26f/image/upload/v1700657797/redvelvet_xg1pkm.png" />
                       <Card.Body>
                         <Card.Title className="fw-bold">{recipe.nombre}</Card.Title>
                         <Row className="unidades-add">

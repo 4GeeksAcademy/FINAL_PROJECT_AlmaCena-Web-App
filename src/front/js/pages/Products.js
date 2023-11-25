@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { Row, Card, Container, Col } from "react-bootstrap";
 import AlmaCenaSidebar from "../component/AlmaCenaSidebar";
 import CreateProductButton from "../component/CreateProductButton";
-import croissant from "../../img/croissant.png";
 import EditProductButton from "../component/EditProductButton";
 import DeleteProductButton from "../component/DeleteProductButton";
 
@@ -79,7 +78,7 @@ export const Products = () => {
                 {products.map((product) => (
                   <Col key={product.receta_id}>
                     <Card>
-                      <Card.Img variant="top" src={croissant} />
+                      <Card.Img variant="top" src="https://res.cloudinary.com/dq5gjc26f/image/upload/v1700657792/croissant_ttac8y.png" />
                       <Card.Body>
                         <Card.Title className="fw-bold">{product.nombre}</Card.Title>
                         <div className="unidades-add">

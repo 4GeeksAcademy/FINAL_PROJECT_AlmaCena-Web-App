@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import recipes from "../../img/recipes.png";
 import "../../styles/login.css";
 
 export const Signup = () => {
@@ -183,7 +182,7 @@ export const Signup = () => {
         {/* Columna derecha */}
         <div
           className="col muestra"
-          style={{ backgroundImage: `url(${recipes})` }}
+          style={{ backgroundImage: `url(https://res.cloudinary.com/dq5gjc26f/image/upload/v1700657797/recipes_nawqzs.png)` }}
         >
           {/* Contenido de la columna derecha */}
         </div>
