@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
-import "../../styles/sidebar.css";
 import LogoutButton from './LogoutButton';
 
 const AlmaCenaSidebar = () => {

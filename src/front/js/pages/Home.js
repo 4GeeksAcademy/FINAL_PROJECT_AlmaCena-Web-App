@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext.js";
-import "../../styles/home.css";
 
 import { MenuNavegacion } from "../component/AlmaCenaNavbar.js";
 

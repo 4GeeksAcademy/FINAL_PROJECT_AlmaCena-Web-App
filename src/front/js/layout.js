@@ -1,7 +1,5 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import ScrollToTop from "./component/scrollToTop";
-import { BackendURL } from "./component/backendURL";
 
 import { Home } from "./pages/Home";
 import injectContext from "./store/appContext";
@@ -23,12 +21,11 @@ import { EditProfile } from "./pages/EditProfile";
 const Layout = () => {
     const basename = process.env.BASENAME || "";
 
-    if (!process.env.BACKEND_URL || process.env.BACKEND_URL == "") return <BackendURL />;
+    if (!process.env.BACKEND_URL || process.env.BACKEND_URL == "") return "Hello world";
 
     return (
         <div>
             <BrowserRouter basename={basename}>
-                <ScrollToTop>
                     <Routes>
                         <Route element={<Home />} path="/" />
                         <Route element={<Login />} path="/login" />
@@ -45,7 +42,6 @@ const Layout = () => {
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />
-                </ScrollToTop>
             </BrowserRouter>
         </div>
     );
