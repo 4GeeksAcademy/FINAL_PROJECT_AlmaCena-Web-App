@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600&display=swap');
+
+body {
+    background-color: #ebf0e4;
+}
+
+.dashboard-lista.list-group-item {
+    background: #ffb7b7;
+}
+
+.rounded.mb-5.dashboard-user.card {
+    border: 1px solid #7e7e7e;
+}
+
+.dashboard-lista.list-group-item {
+    padding-left: 38px;
+    padding-bottom: 13px;
+    padding-top: 13px;
+    border: none;
+    border-top: none;
+    font-weight: 700;
+}
+
+.card>.list-group {
+    background: #ffb7b7;
+    padding: 20px 0px;
+}
+
+.dashboard-user-listado.card-footer {
+    background: #ffb7b7;
+}
+
+.dashboard-user-listado {
+    border-top: 1px solid #d9d9d9;
+    padding-bottom: 13px;
+    padding-top: 13px;
+  }
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+    #gris-dashboard {
+        padding: 0px 10px 20px 10px;
+    }
+
+    .col.muestra {
+        display: none;
+    }
+
+    .formulario-signup {
+        background-color: white;
+        padding: 50px 28px;
+    }
+
+    .formulario-forgot {
+        background-color: white;
+        padding: 50px 28px;
+    }
+
+    .formulario {
+        background-color: white;
+        padding: 50px 28px;
+    }
+
+    
+}

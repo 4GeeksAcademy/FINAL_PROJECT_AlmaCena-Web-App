@@ -1,0 +1,336 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600&display=swap');
+
+
+
+.navbar-collapse {
+    flex-basis: 100%;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: right;
+}
+
+h1 {
+    letter-spacing: 0em;
+    margin-top: -173px;
+    font-weight: bold;
+    line-height: 1;
+    font-size: 7em;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    margin-bottom: 34px;
+}
+
+h2 {
+    font-weight: bold;
+    font-family: 'Nunito', sans-serif;
+    font-size: 5em;
+    line-height: 1;
+    padding-bottom: 18px;
+}
+
+h3 {
+    padding-bottom: 18px;
+    padding-top: 36px;
+    font-weight: bold;
+    font-family: 'Nunito', sans-serif;
+    color: white;
+    font-size: 3.5em;
+    line-height: 1;
+}
+
+p {
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.blanco {
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+    color:white;
+}
+.contenedor-fluid {
+    width: 100%;
+    padding-right: var(--bs-gutter-x, 0rem);
+    padding-left: var(--bs-gutter-x, 0rem);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.start {
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-bottom: 140px;
+    padding-top: 200px;
+    background: #415E4C;
+}
+
+img.started {
+    margin: 0 auto;
+    display: block;
+    width: 80%;
+}
+
+.intro {
+    padding-bottom: 80px;
+    padding-top: 80px;
+}
+
+.fondo-carne {
+    background-position: right;
+    height: 630px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+img.spices {
+    width: 95%;
+}
+
+.row.especias {
+    padding-bottom: 140px;
+    margin-top: -98px;
+}
+
+img.imagen {
+    width: 100%;
+}
+
+img.sal {
+    border-radius: 14px;
+    width: 100%;
+    float: right;
+}
+
+.receta_uno {
+    background-size: auto;
+    background-position: top;
+    background-repeat: no-repeat;
+    height: 460px;
+    background-image: url(https://images.pexels.com/photos/4202390/pexels-photo-4202390.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1;);
+}
+
+.receta_dos {
+    background-size: auto;
+    background-position: top;
+    background-repeat: no-repeat;
+    height: 460px;
+    background-image: url(https://images.pexels.com/photos/6542792/pexels-photo-6542792.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+}
+
+.receta_tres {
+    background-size: auto;
+    background-position: top;
+    background-repeat: no-repeat;
+    height: 460px;
+    background-image: url(https://images.pexels.com/photos/4696279/pexels-photo-4696279.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+}
+
+.receta_cuatro {
+    background-size: auto;
+    background-position: top;
+    background-repeat: no-repeat;
+    height: 460px;
+    background-image: url(https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+}
+.receta_cinco {
+    background-size: auto;
+    background-position: top;
+    background-repeat: no-repeat;
+    height: 460px;
+    background-image: url(https://images.pexels.com/photos/3323682/pexels-photo-3323682.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+}
+
+.receta_seis {
+    background-size: auto;
+    background-position: top;
+    background-repeat: no-repeat;
+    height: 460px;
+    background-image: url(https://images.pexels.com/photos/434295/pexels-photo-434295.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+}
+
+img.esparrago {
+    width: 100%;
+    border-radius: 20px;
+}
+
+.row.interior_receta_uno {
+    padding-top: 40px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+.row.fila_receta_dos {
+    padding-bottom: 20px;
+    padding-top: 40px;
+    text-align: center;
+}
+
+.interior_receta {
+    text-align: center;
+    padding-top: 40px;
+}
+
+.recipes {
+    background: no-repeat;
+    background-position-x: right;
+    padding: 100px 80px;
+}
+
+.receta_uno, .receta_dos, .receta_tres, .receta_cuatro, .receta_cinco, .receta_seis{
+    margin: 13px;
+    border-radius: 14px;
+}
+
+.inventory {
+    padding: 140px 80px;
+    background: #EBF0E4;
+}
+
+.texto_uno {
+    padding-bottom: 80px;
+    text-align: left;
+}
+
+.texto_dos {
+    padding-bottom: 80px;
+    text-align: right;
+}
+
+img.leaf {
+    margin: 0 auto;
+    display: block;
+    width: 64%;
+}
+
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+    .start {
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-bottom: 80px;
+        padding-top: 0px;
+        background: #415E4C;
+    }
+
+    h1 {  
+        margin-top: 34px;
+        font-size: 3em;
+        margin-bottom: 34px;
+    }
+    h2 {
+        font-size: 2.5em;
+    }
+
+    .vacia {display:none;}
+
+    .intro {
+        padding-bottom: 0px;
+        padding-top: 0px;
+    }
+
+    .fondo-carne {
+        background-image: none !important;
+        background: #415E4C;
+    }
+
+    img.carne-movil {
+        width: 100%;
+    }
+
+    .row.especias {
+        padding-bottom: 34px;
+        margin-top: 34px;
+    }
+
+    .recipes {
+        margin: 0 auto;
+        background: no-repeat;
+        background-position-x: center;
+        padding: 34px 30px;
+    }
+
+
+    img.spices {
+        width: 100%;
+    }
+
+
+    .receta_uno, .receta_dos, .receta_tres, .receta_cuatro, .receta_cinco, .receta_seis {
+        /* margin: 13px; */
+        margin: 10px auto;
+        border-radius: 14px;
+    }
+
+    .inventory {
+        padding: 60px 30px;
+        background: #EBF0E4;
+    }
+
+    .texto_uno {
+        padding-bottom: 0px;
+        text-align: left;
+    }
+
+}
+
+@media only screen and (min-width: 601px) and (max-width: 991px) {
+    .start {
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 0px;
+        padding-top: 20px;
+        background: #415E4C;
+    }
+
+    h1 {  
+        margin-top: 34px;
+        font-size: 3em;
+        margin-bottom: 34px;
+    }
+    h2 {
+        font-size: 2.5em;
+    }
+
+
+    .intro {
+        padding-bottom: 0px;
+        padding-top: 0px;
+    }
+    .btn-light {
+        width: 100%;
+          margin-top: 22px;
+      }
+
+      .texto-boton {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 11px;
+        font-weight: 400;
+    }
+      
+    /* .fondo-carne {
+        background-image: none !important;
+        background: #415E4C;
+    } */
+
+    img.carne-movil {
+        display:none;
+    }
+  }
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .carne-movil {
+        display:none;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) { 
+    .carne-movil {
+    display:none;
+}}
