@@ -17,9 +17,9 @@ export const PasswordRecovery = () => {
       const response = await fetch(process.env.BACKEND_URL + "/passwordrecovery", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email })
       });
 
       if (response.ok) {

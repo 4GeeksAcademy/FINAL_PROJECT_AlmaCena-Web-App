@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
 
 const EditIngredientButton = ({ ingredient, onIngredientUpdated }) => {
@@ -22,13 +22,13 @@ const EditIngredientButton = ({ ingredient, onIngredientUpdated }) => {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("jwt-token")}`,
+          Authorization: `Bearer ${localStorage.getItem("jwt-token")}`
         },
         body: JSON.stringify({
           materia_prima_id: ingredient.materia_prima_id,
           cantidad_stock: cantidadStock,
-          minimo_stock: minimoStock,
-        }),
+          minimo_stock: minimoStock
+        })
       });
 
       if (!response.ok) {
@@ -50,7 +50,7 @@ const EditIngredientButton = ({ ingredient, onIngredientUpdated }) => {
   return (
     <>
       <Button variant="warning edit-ingredients" onClick={handleShow}>
-      <i class="fa-regular fa-pen-to-square"></i>
+      <i className="fa-regular fa-pen-to-square"></i>
       </Button>
 
       <Modal show={show} onHide={handleClose}>

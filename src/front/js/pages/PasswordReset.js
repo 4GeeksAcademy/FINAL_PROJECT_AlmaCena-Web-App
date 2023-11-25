@@ -26,9 +26,9 @@ const PasswordReset = () => {
             const response = await fetch(process.env.BACKEND_URL + `/resetpassword/${reset_token}`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ new_password: password }),
+                body: JSON.stringify({ new_password: password })
             });
 
             if (response.ok) {

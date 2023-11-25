@@ -35,7 +35,7 @@ const AlmaCenaSidebar = () => {
           const data = await response.json();
           setUser({
             name: data.name,
-            last_name: data.last_name,
+            last_name: data.last_name
           });
 
           setUserDataLoaded(true);
@@ -59,7 +59,7 @@ const AlmaCenaSidebar = () => {
     { path: "/dashboard", textdos: "Dashboard", icon: "fa-solid fa-table-columns fa-lg" },
     { path: "/dashboard/ingredients", textdos: "Ingredients", icon: "fa-solid fa-wheat-awn fa-lg", badge: "badge badge-secondary 1st", text: "1st"},
     { path: "/dashboard/recipes", textdos: "Recipes", icon: "fa-solid fa-book fa-lg", badge: "badge badge-secondary 2nd", text: "2nd"  },
-    { path: "/dashboard/products", textdos: "Products", icon: "fas fa-cheese fa-lg", badge: "badge badge-secondary 3rd", text: "3rd" },
+    { path: "/dashboard/products", textdos: "Products", icon: "fas fa-cheese fa-lg", badge: "badge badge-secondary 3rd", text: "3rd" }
   ];
 
   return (
@@ -75,8 +75,8 @@ const AlmaCenaSidebar = () => {
           <div className="table-responsive usuario-registrado">
           <table>
             <tr>
-              <th rowspan="2" className="imagen-usuario"><img src={userprofile} alt="" /></th>
-              <td colspan="2" className="info-usuario-registrado"><Link className="enlace-user" to="/dashboard/profile"> {user.name} {user.last_name} </Link></td>
+              <th rowSpan="2" className="imagen-usuario"><img src={userprofile} alt="" /></th>
+              <td colSpan="2" className="info-usuario-registrado"><Link className="enlace-user" to="/dashboard/profile"> {user.name} {user.last_name} </Link></td>
             </tr>
             <tr>
               <td ><span className="info-company">Company</span></td>
@@ -95,7 +95,7 @@ const AlmaCenaSidebar = () => {
                 <Link
                   className="menu-navega"
                   to={item.path}
-                  style={selectedLink === item.path ? { color: "black", fontWeight: "bold", fontSize:"15px", fontFamily:'Montserrat',} : {}}
+                  style={selectedLink === item.path ? { color: "black", fontWeight: "bold", fontSize:"15px", fontFamily:'Montserrat'} : {}}
                 >
                   <div className="menu-text">
                   

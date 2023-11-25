@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { Card, Container, Table, Row, Col } from "react-bootstrap";
-import LoginButton from "../component/LoginButton";
 import AlmaCenaSidebar from "../component/AlmaCenaSidebar";
 import CreateIngredientButton from "../component/CreateIngredientButton";
 import EditIngredientButton from "../component/EditIngredientButton";
@@ -25,10 +24,10 @@ const Ingredients = () => {
       const response = await fetch(process.env.BACKEND_URL + "/dashboard/ingredients", {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${token}`,
-        },
+          Authorization: `Bearer ${token}`
+        }
       });
-      if (response.status == 401) { navigate("/login") }
+      if (response.status == 401) { navigate("/login"); }
       if (!response.ok) {
         throw new Error("Error fetching ingredients data");
       }

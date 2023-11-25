@@ -8,14 +8,14 @@ const CreateIngredientButton = ({ onIngredientCreated }) => {
     clasificacion: "",
     unidad_medida: "",
     cantidad: 0,
-    minimo_stock: 0,
+    minimo_stock: 0
   });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: value
     });
   };
 
@@ -27,9 +27,9 @@ const CreateIngredientButton = ({ onIngredientCreated }) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${token}`
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(formData)
       });
   
       if (!response.ok) {

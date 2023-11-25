@@ -24,14 +24,14 @@ const EditProductButton = ({ product, onProductEdited }) => {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("jwt-token")}`,
+          Authorization: `Bearer ${localStorage.getItem("jwt-token")}`
         },
         body: JSON.stringify({
           id: product.receta_id,
           cantidad_inventario: cantidadInventario,
           clasificacion: clasificacion,
-          cantidad_inventario_minimo: cantidadInventarioMinimo,
-        }),
+          cantidad_inventario_minimo: cantidadInventarioMinimo
+        })
       });
 
       if (!response.ok) {
@@ -51,7 +51,7 @@ const EditProductButton = ({ product, onProductEdited }) => {
   return (
     <>
       <Button variant="warning" onClick={handleShow}>
-      <i class="fa-regular fa-pen-to-square"></i><span className="text-white ps-2 texto-boton">Edit</span>
+      <i className="fa-regular fa-pen-to-square"></i><span className="text-white ps-2 texto-boton">Edit</span>
       </Button>
 
       <Modal show={show} onHide={handleClose}>

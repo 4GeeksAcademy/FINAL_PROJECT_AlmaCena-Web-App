@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../styles/profile.css";
 import perfil from "../../img/perfil.png";
@@ -6,7 +6,7 @@ import AlmaCenaSidebar from "../component/AlmaCenaSidebar";
 import { Link } from "react-router-dom";
 
 export const Profile = () => {
-  const [showPassword, setShowPassword] = useState(false);
+  // const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const [user, setUser] = useState({
     name: "",
@@ -31,7 +31,7 @@ export const Profile = () => {
             Authorization: `Bearer ${localStorage.getItem("jwt-token")}`
           }
         });
-        if (response.status == 401) { navigate("/login") }
+        if (response.status == 401) { navigate("/login"); }
         if (!response.ok) {
           throw new Error("Error fetching dashboard data");
         }
@@ -41,7 +41,7 @@ export const Profile = () => {
           last_name: data.last_name,
           email: data.email,
           address: data.address,
-          password: data.password,
+          password: data.password
         });
       } catch (error) {
         console.error("Error fetching dashboard data:", error);

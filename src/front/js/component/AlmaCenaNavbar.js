@@ -1,8 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Navbar, Nav } from 'react-bootstrap';
 import SignUpButton from "./SignUpButton";
 import LoginButton from "./LoginButton";
-import logo from "../../img/logoalmacena.png";
 import { Context } from "../store/appContext";
 import LogoutButton from "./LogoutButton";
 
@@ -19,7 +17,7 @@ export const MenuNavegacion = () => {
 	return (
 		<nav className="navbar navbar-expand-lg bg-body-tertiary">
 			<div className="container-fluid">
-				<img className="Almacena" src={logo} alt="Logo" />
+				<img className="Almacena" src="https://res.cloudinary.com/dq5gjc26f/image/upload/v1700657795/logoalmacena_sydhl9.png" alt="Logo" />
 				<button
 					className="navbar-toggler"
 					type="button"

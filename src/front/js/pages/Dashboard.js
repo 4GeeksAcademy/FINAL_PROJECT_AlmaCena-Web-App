@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { Card, ListGroup, Container, Row, Col, Alert, CardTitle, CardFooter } from "react-bootstrap";
 import "../../styles/dashboard.css";
-import LoginButton from "../component/LoginButton";
 import AlmaCenaSidebar from "../component/AlmaCenaSidebar";
 
 const Dashboard = () => {
@@ -22,7 +21,7 @@ const Dashboard = () => {
             Authorization: `Bearer ${localStorage.getItem("jwt-token")}`
           }
         });
-        if (response.status == 401) {navigate("/login")}
+        if (response.status == 401) {navigate("/login");}
         if (!response.ok) {
           throw new Error("Error fetching dashboard data");
         };

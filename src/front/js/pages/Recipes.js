@@ -22,10 +22,10 @@ const Recipes = () => {
         const response = await fetch(process.env.BACKEND_URL + "/dashboard/recipes", {
           method: "GET",
           headers: {
-            Authorization: `Bearer ${token}`,
-          },
+            Authorization: `Bearer ${token}`
+          }
         });
-        if (response.status == 401) { navigate("/login") }
+        if (response.status == 401) { navigate("/login"); }
         if (!response.ok) {
           throw new Error("Failed to fetch recipes");
         }
@@ -49,8 +49,8 @@ const Recipes = () => {
       const response = await fetch(process.env.BACKEND_URL + "/dashboard/recipes", {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("jwt-token")}`,
-        },
+          Authorization: `Bearer ${localStorage.getItem("jwt-token")}`
+        }
       });
 
       if (!response.ok) {

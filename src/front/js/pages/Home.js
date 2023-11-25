@@ -1,17 +1,7 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext.js";
 import "../../styles/home.css";
-import carne from "../../img/carne.png";
-import spices1 from "../../img/spices1.png";
-import spices2 from "../../img/spices2.png";
-import spices3 from "../../img/spices3.png";
-import imagen from "../../img/imagen.png";
-import sal from "../../img/sal.png";
 import hojas from "../../img/hojas.png";
-import Leaf from "../../img/Leaf.png";
-import inventary1 from "../../img/inventary1.png";
-import inventary2 from "../../img/inventary2.png";
-import inventary3 from "../../img/inventary3.png";
 
 import { MenuNavegacion } from "../component/AlmaCenaNavbar.js";
 
@@ -27,9 +17,9 @@ export const Home = () => {
 
 			{/* contenedor presentación */}
 			<div className="start">
-				<div className="row fondo-carne" style={{ backgroundImage: `url(${carne})` }}>
+				<div className="row fondo-carne" style={{ backgroundImage: `url("https://res.cloudinary.com/dq5gjc26f/image/upload/v1700657795/Image_xk1qei.png")` }}>
 					<div className="col intro">
-					<img className="carne-movil" src={carne} />
+					<img className="carne-movil" src="https://res.cloudinary.com/dq5gjc26f/image/upload/v1700657795/Image_xk1qei.png" />
 						<h1>Keep track of < br />your stuff like < br /> never before</h1>
 						<p className="blanco">Lorem ipsum dolor sit amet, consectetur <br />adipiscing elit. Neque congue arcu</p>
 						
@@ -37,14 +27,14 @@ export const Home = () => {
 				</div>
 				<div className="row especias">
 					<div className="col vacia"></div>
-					<div className="col"><img className="spices" src={spices1} /></div>
-					<div className="col"><img className="spices" src={spices2} /></div>
-					<div className="col"><img className="spices" src={spices3} /></div>
+					<div className="col"><img className="spices" src="https://res.cloudinary.com/dq5gjc26f/image/upload/v1700657799/spices3_iufgnn.png" /></div>
+					<div className="col"><img className="spices" src="https://res.cloudinary.com/dq5gjc26f/image/upload/v1700657799/spices2_d7mnyi.png" /></div>
+					<div className="col"><img className="spices" src="https://res.cloudinary.com/dq5gjc26f/image/upload/v1700657798/spices1_aya8sg.png" /></div>
 					<div className="col vacia"></div>
 				</div>
 				<div className="row">
 					<div className="col-sm-12 col-md-6">
-						<img className="imagen" src={imagen} />
+						<img className="imagen" src="https://res.cloudinary.com/dq5gjc26f/image/upload/v1700657795/imagen_dlazem.png" />
 						<h3>Create your < br /> recipe now!</h3>
 						<p className="blanco">Lorem ipsum dolor sit amet consectetur adipiscing elit. <br />Neque congue arcu amet consectetur adipiscing.</p>
 					</div>
@@ -53,7 +43,7 @@ export const Home = () => {
 					</div>
 					<div className="col-sm-12 col-md-4">
 						<p className="blanco">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neque congue arcu</p>
-						<img className="sal" src={sal} />
+						<img className="sal" src="https://res.cloudinary.com/dq5gjc26f/image/upload/v1700657798/sal_ysgtt3.png" />
 					</div>
 				</div>
 			</div>
@@ -145,7 +135,7 @@ export const Home = () => {
 					<div className="col-sm-12 col-md-1">
 						</div>
 						<div className="col-sm-12 col-md-4">
-							<img className="leaf" src={Leaf} />
+							<img className="leaf" src="https://res.cloudinary.com/dq5gjc26f/image/upload/v1700657795/Leaf_wqwsrb.png" />
 						</div>
 						<div className="col-sm-12 col-md-2">
 						</div>
@@ -163,18 +153,18 @@ export const Home = () => {
 				<div className="row fila_receta_uno">
 					<div className="col-sm-12 col-md-4">
 						<div className="row interior_receta">
-						<img className="esparrago" src={inventary1} />	
+						<img className="esparrago" src="https://res.cloudinary.com/dq5gjc26f/image/upload/v1700657793/esparrago_sytvoc.png" />	
 							
 						</div>
 					</div>
 					<div className="col-sm-12 col-md-4">
 						<div className="row interior_receta">
-						<img className="esparrago" src={inventary2} />
+						<img className="esparrago" src="https://res.cloudinary.com/dq5gjc26f/image/upload/v1700657793/esparrago_sytvoc.png" />
 						</div>
 					</div>
 					<div className="col-sm-12 col-md-4">
 						<div className="row interior_receta">
-						<img className="esparrago" src={inventary3} />
+						<img className="esparrago" src="https://res.cloudinary.com/dq5gjc26f/image/upload/v1700657793/esparrago_sytvoc.png" />
 						
 						</div>
 					</div>

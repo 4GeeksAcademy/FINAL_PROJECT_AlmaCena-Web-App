@@ -7,7 +7,7 @@ const CreateProductButton = ({ onProductCreated }) => {
     receta_nombre: '',
     cantidad_inventario: 0,
     clasificacion: '',
-    cantidad_inventario_minimo: 0,
+    cantidad_inventario_minimo: 0
   });
   const [recipeList, setRecipeList] = useState([]);
 
@@ -20,8 +20,8 @@ const CreateProductButton = ({ onProductCreated }) => {
       const response = await fetch(process.env.BACKEND_URL + "/dashboard/recipes", {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("jwt-token")}`,
-        },
+          Authorization: `Bearer ${localStorage.getItem("jwt-token")}`
+        }
       });
 
       if (!response.ok) {
@@ -39,7 +39,7 @@ const CreateProductButton = ({ onProductCreated }) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: value
     });
   };
 
@@ -49,9 +49,9 @@ const CreateProductButton = ({ onProductCreated }) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("jwt-token")}`,
+          Authorization: `Bearer ${localStorage.getItem("jwt-token")}`
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(formData)
       });
 
       if (!response.ok) {

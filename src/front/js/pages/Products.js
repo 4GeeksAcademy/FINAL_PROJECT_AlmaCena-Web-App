@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Row, Card, Button, Container, Col } from "react-bootstrap";
+import { Row, Card, Container, Col } from "react-bootstrap";
 import AlmaCenaSidebar from "../component/AlmaCenaSidebar";
 import CreateProductButton from "../component/CreateProductButton";
 import croissant from "../../img/croissant.png";
@@ -23,8 +23,8 @@ export const Products = () => {
       const response = await fetch(process.env.BACKEND_URL + "/dashboard/products", {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${token}`,
-        },
+          Authorization: `Bearer ${token}`
+        }
       });
       if (response.status === 401) {
         navigate("/login");
