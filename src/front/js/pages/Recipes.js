@@ -1,16 +1,11 @@
-
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AlmaCenaSidebar from "../component/AlmaCenaSidebar";
-import { Container, Card, Button, Row, Col } from "react-bootstrap";
 import "../../styles/myproducts.css";
 import CreateRecipeButton from "../component/CreateRecipeButton";
 import DeleteRecipeButton from "../component/DeleteRecipeButton";
 
-
-
 const Recipes = () => {
-
   const navigate = useNavigate();
   const [recipes, setRecipes] = useState([]);
   const token = localStorage.getItem("jwt-token");
@@ -18,13 +13,18 @@ const Recipes = () => {
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
-        const response = await fetch(process.env.BACKEND_URL + "/dashboard/recipes", {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${token}`
+        const response = await fetch(
+          process.env.BACKEND_URL + "/dashboard/recipes",
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
           }
-        });
-        if (response.status == 401) { navigate("/login"); }
+        );
+        if (response.status == 401) {
+          navigate("/login");
+        }
         if (!response.ok) {
           throw new Error("Failed to fetch recipes");
         }
@@ -45,12 +45,15 @@ const Recipes = () => {
 
   const handleRecipeCreated = async () => {
     try {
-      const response = await fetch(process.env.BACKEND_URL + "/dashboard/recipes", {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("jwt-token")}`
+      const response = await fetch(
+        process.env.BACKEND_URL + "/dashboard/recipes",
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("jwt-token")}`,
+          },
         }
-      });
+      );
 
       if (!response.ok) {
         throw new Error("Error fetching updated recipes");
@@ -63,63 +66,64 @@ const Recipes = () => {
     }
   };
 
-
   return (
-    <Container fluid>
-      <Row className="principal-recipes">
-      <Col md={4} lg={2} className="p-0 m-0" id="reduccion">
+    <div className="container-fluid">
+      <div className="row principal-recipes">
+        <div className="col-md-4 col-lg-2 p-0 m-0" id="reduccion">
           <AlmaCenaSidebar />
-        </Col>
+        </div>
 
-        <Col md={8} lg={10} id="reduccion-uno">
+        <div className="col-md-8 col-lg-10" id="reduccion-uno">
           <div className="gris">
-            <Row className="boton-categories">
-              <Col md={6}>
+            <div className="row boton-categories">
+              <div className="col-md-6">
                 <p>
                   Categories: <span>All</span>{" "}
                 </p>
-              </Col>
-              <Col md={6}>
+              </div>
+              <div className="col-md-6">
                 <CreateRecipeButton onRecipeCreated={handleRecipeCreated} />
-              </Col>
-          </Row>
+              </div>
+            </div>
             <div className="myproducts bg-white">
-            <Row className="g-4 row row-cols-md-2 row-cols-lg-3 row-cols-1">
+              <div className="row g-4 row-cols-md-2 row-cols-lg-3 row-cols-1">
                 {recipes.map((recipe) => (
-                  <Col key={recipe.receta_id}>
-                    <Card>
-                      <Card.Img variant="top" src="https://res.cloudinary.com/dq5gjc26f/image/upload/v1700657797/redvelvet_xg1pkm.png" />
-                      <Card.Body>
-                        <Card.Title className="fw-bold">{recipe.nombre}</Card.Title>
-                        <Row className="unidades-add">
-                          <Col md={12}>
-                            <p className="card-text unidades-receta">
-                             Total Yield: {recipe.rinde} {recipe.unidad_medida}
-                            </p>
-                          </Col>
-                          <Col className="col-9">
-                            <Button
-                              variant="primary info-receta"
-                              onClick={() => navigate(`/dashboard/recipes/${recipe.receta_id}`)}
-                            >
-                              See Recipe
-                            </Button>
-                         </Col>
-                        <Col className="col-3">
-                        <DeleteRecipeButton recipe={recipe} onRecipeDeleted={handleRecipeCreated} />
-                        </Col>
-                        </Row>
-                      </Card.Body>
-                    </Card>
-                  </Col>
+                  <div key={recipe.receta_id} className="col">
+                    <div className="card">
+                      <img
+                        src="https://res.cloudinary.com/dq5gjc26f/image/upload/v1700657797/redvelvet_xg1pkm.png"
+                        className="card-img-top"
+                        alt="Recipe"
+                      />
+                      <div className="card-body">
+                        <h5 className="card-title fw-bold">{recipe.nombre}</h5>
+                        <div className="unidades-add">
+                          <p className="card-text unidades-receta">
+                            Total Yield: {recipe.rinde} {recipe.unidad_medida}
+                          </p>
+                          <button
+                            className="btn btn-primary info-receta"
+                            onClick={() =>
+                              navigate(`/dashboard/recipes/${recipe.receta_id}`)
+                            }
+                          >
+                            See Recipe
+                          </button>
+                          <DeleteRecipeButton
+                            recipe={recipe}
+                            onRecipeDeleted={handleRecipeCreated}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 ))}
-              </Row>
+              </div>
             </div>
           </div>
-   
-        </Col>
-      </Row>
-    </Container>
+        </div>
+      </div>
+    </div>
   );
 };
 

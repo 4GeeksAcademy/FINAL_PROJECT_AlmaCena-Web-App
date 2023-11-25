@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { Button, Modal, Form } from "react-bootstrap";
 
 const EditIngredientButton = ({ ingredient, onIngredientUpdated }) => {
   const [show, setShow] = useState(false);
   const [cantidadStock, setCantidadStock] = useState(ingredient.cantidad_stock);
-  const [minimoStock, setMinimoStock] = useState(ingredient.cantidad_stock);
+  const [minimoStock, setMinimoStock] = useState(ingredient.minimo_stock);
 
   const handleClose = () => {
     setShow(false);
@@ -49,45 +48,56 @@ const EditIngredientButton = ({ ingredient, onIngredientUpdated }) => {
 
   return (
     <>
-      <Button variant="warning edit-ingredients" onClick={handleShow}>
-      <i className="fa-regular fa-pen-to-square"></i>
-      </Button>
+      <button className="btn btn-warning edit-ingredients" onClick={handleShow}>
+        <i className="far fa-edit"></i>
+      </button>
 
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Edit Ingredient</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group controlId="formCantidadStock">
-              <Form.Label>Quantity</Form.Label>
-              <Form.Control
-                type="number"
-                placeholder="Enter cantidad stock"
-                value={cantidadStock}
-                onChange={(e) => setCantidadStock(e.target.value)}
-              />
-            </Form.Group>
-            <Form.Group controlId="formMinimoStock">
-              <Form.Label>Alert Me When I Have</Form.Label>
-              <Form.Control
-                type="number"
-                placeholder="Enter minimo stock"
-                value={minimoStock}
-                onChange={(e) => setMinimoStock(e.target.value)}
-              />
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleUpdateIngredient}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      {show && (
+        <div className="modal fade show" tabIndex="-1" role="dialog" style={{ display: 'block' }}>
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Edit Ingredient</h5>
+                <button type="button" className="btn-close" onClick={handleClose}></button>
+              </div>
+              <div className="modal-body">
+                <form>
+                  <div className="mb-3">
+                    <label htmlFor="formCantidadStock" className="form-label">Quantity</label>
+                    <input
+                      type="number"
+                      className="form-control"
+                      id="formCantidadStock"
+                      placeholder="Enter cantidad stock"
+                      value={cantidadStock}
+                      onChange={(e) => setCantidadStock(e.target.value)}
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label htmlFor="formMinimoStock" className="form-label">Alert Me When I Have</label>
+                    <input
+                      type="number"
+                      className="form-control"
+                      id="formMinimoStock"
+                      placeholder="Enter minimo stock"
+                      value={minimoStock}
+                      onChange={(e) => setMinimoStock(e.target.value)}
+                    />
+                  </div>
+                </form>
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" onClick={handleClose}>
+                  Close
+                </button>
+                <button type="button" className="btn btn-primary" onClick={handleUpdateIngredient}>
+                  Save Changes
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };

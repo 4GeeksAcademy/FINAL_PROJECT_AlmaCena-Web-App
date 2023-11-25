@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Alert } from "react-bootstrap";
 import "../../styles/login.css";
 import { Link } from "react-router-dom";
 
@@ -13,13 +12,16 @@ export const PasswordRecovery = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(process.env.BACKEND_URL + "/passwordrecovery", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ email })
-      });
+      const response = await fetch(
+        process.env.BACKEND_URL + "/passwordrecovery",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        }
+      );
 
       if (response.ok) {
         // Password reset link sent successfully
@@ -66,14 +68,14 @@ export const PasswordRecovery = () => {
             your password.
           </p>
           {showSuccessAlert && (
-            <Alert variant="success">
+            <div className="alert alert-success">
               The Email was sent successfully. Check your Email.
-            </Alert>
+            </div>
           )}
           {showErrorAlert && (
-            <Alert variant="danger">
+            <div className="alert alert-danger">
               Email not recognized. Try again.
-            </Alert>
+            </div>
           )}
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
@@ -98,7 +100,9 @@ export const PasswordRecovery = () => {
         {/* Columna derecha */}
         <div
           className="col muestra"
-          style={{ backgroundImage: `url(https://res.cloudinary.com/dq5gjc26f/image/upload/v1700657797/recipes_nawqzs.png)` }}
+          style={{
+            backgroundImage: `url(https://res.cloudinary.com/dq5gjc26f/image/upload/v1700657797/recipes_nawqzs.png)`,
+          }}
         ></div>
       </div>
     </div>

@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
-import { Card, Container, Table, Row, Col } from "react-bootstrap";
 import AlmaCenaSidebar from "../component/AlmaCenaSidebar";
 import CreateIngredientButton from "../component/CreateIngredientButton";
 import EditIngredientButton from "../component/EditIngredientButton";
@@ -21,13 +20,18 @@ const Ingredients = () => {
         return;
       }
 
-      const response = await fetch(process.env.BACKEND_URL + "/dashboard/ingredients", {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`
+      const response = await fetch(
+        process.env.BACKEND_URL + "/dashboard/ingredients",
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
-      });
-      if (response.status == 401) { navigate("/login"); }
+      );
+      if (response.status === 401) {
+        navigate("/login");
+      }
       if (!response.ok) {
         throw new Error("Error fetching ingredients data");
       }
@@ -47,32 +51,34 @@ const Ingredients = () => {
   }, []);
 
   return (
-    <Container fluid>
-      <Row className="principal-products">
-      <Col className="p-0 m-0 col-md-3 col-lg-2" id="reduccion">
+    <div className="container-fluid">
+      <div className="row principal-products">
+        <div className="col-md-3 col-lg-2 p-0 m-0" id="reduccion">
           <AlmaCenaSidebar />
-        </Col>
+        </div>
 
-        <Col className="col-md-9 col-lg-10" id="reduccion-uno">
+        <div className="col-md-9 col-lg-10" id="reduccion-uno">
           <div className="gris">
-            <Row className="boton-categories">
-              <Col sm={12} md={6}>
-                <p>Categories: <span>All</span></p>
-              </Col>
-              <Col sm={12} md={6}>
-                <CreateIngredientButton onIngredientCreated={() => fetchIngredientsData()} />
-              </Col>
-            </Row>
-
-
+            <div className="row boton-categories">
+              <div className="col-sm-12 col-md-6">
+                <p>
+                  Categories: <span>All</span>
+                </p>
+              </div>
+              <div className="col-sm-12 col-md-6">
+                <CreateIngredientButton
+                  onIngredientCreated={() => fetchIngredientsData()}
+                />
+              </div>
+            </div>
 
             <div className="myproducts bg-white">
-              {/* <Card className="rounded"> */}
-                <Card.Header className="titulo-ingredientes"> 
-                  <Card.Title className="mb-0">Ingredients</Card.Title>
-              </Card.Header>
-                {/* <Card.Body>  */}
-                  <Table striped bordered hover responsive>
+              <div className="card rounded">
+                <div className="card-header titulo-ingredientes">
+                  <div className="card-title mb-0">Ingredients</div>
+                </div>
+                <div className="card-body">
+                  <table className="table table-striped table-bordered table-hover responsive">
                     <thead>
                       <tr>
                         <th>Name</th>
@@ -93,23 +99,33 @@ const Ingredients = () => {
                             <td>{materiaPrima.cantidad_stock_minimo}</td>
                             <td>{materiaPrima.unidad_medida}</td>
                             <td>{materiaPrima.clasificacion}</td>
-                            <td className="columna-r-gris"><EditIngredientButton
-                              ingredient={materiaPrima}
-                              onIngredientUpdated={() => fetchIngredientsData()}
-                            /></td>
-                            <td><DeleteIngredientButton ingredient={materiaPrima} onIngredientDeleted={() => fetchIngredientsData()} />
+                            <td className="columna-r-gris">
+                              <EditIngredientButton
+                                ingredient={materiaPrima}
+                                onIngredientUpdated={() =>
+                                  fetchIngredientsData()
+                                }
+                              />
+                            </td>
+                            <td>
+                              <DeleteIngredientButton
+                                ingredient={materiaPrima}
+                                onIngredientDeleted={() =>
+                                  fetchIngredientsData()
+                                }
+                              />
                             </td>
                           </tr>
                         ))}
                     </tbody>
-                   </Table>
-          {/* </Card.Body>
-              </Card>  */}
+                  </table>
+                </div>
+              </div>
             </div>
           </div>
-        </Col>
-      </Row>
-    </Container>
+        </div>
+      </div>
+    </div>
   );
 };
 

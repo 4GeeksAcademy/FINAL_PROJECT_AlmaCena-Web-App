@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Row, Card, Container, Col } from "react-bootstrap";
 import AlmaCenaSidebar from "../component/AlmaCenaSidebar";
 import CreateProductButton from "../component/CreateProductButton";
 import EditProductButton from "../component/EditProductButton";
@@ -19,12 +18,15 @@ export const Products = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch(process.env.BACKEND_URL + "/dashboard/products", {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`
+      const response = await fetch(
+        process.env.BACKEND_URL + "/dashboard/products",
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
-      });
+      );
       if (response.status === 401) {
         navigate("/login");
       }
@@ -54,54 +56,73 @@ export const Products = () => {
   };
 
   return (
-    <Container fluid>
-      <Row className="principal-products">
-      <Col md={4} lg={2} className="p-0 m-0" id="reduccion">
+    <div className="container-fluid">
+      <div className="row principal-products">
+        <div className="col-md-4 col-lg-2 p-0 m-0" id="reduccion">
           <AlmaCenaSidebar />
-        </Col>
-        
-        <Col md={8} lg={10} id="reduccion-uno">
+        </div>
+
+        <div className="col-md-8 col-lg-10" id="reduccion-uno">
           <div className="gris">
-            <Row className="boton-categories">
-              <Col sm={12} md={6}>
+            <div className="row boton-categories">
+              <div className="col-sm-12 col-md-6">
                 <p>
                   Categories: <span>All</span>
                 </p>
-              </Col>
-              <Col sm={12} md={6}>
+              </div>
+              <div className="col-sm-12 col-md-6">
                 <CreateProductButton onProductCreated={handleProductCreated} />
-              </Col>
-            </Row>
+              </div>
+            </div>
 
             <div className="myproducts bg-white">
-              <Row className="g-4 row row-cols-md-2 row-cols-lg-3 row-cols-1">
+              <div className="row g-4 row-cols-md-2 row-cols-lg-3 row-cols-1">
                 {products.map((product) => (
-                  <Col key={product.receta_id}>
-                    <Card>
-                      <Card.Img variant="top" src="https://res.cloudinary.com/dq5gjc26f/image/upload/v1700657792/croissant_ttac8y.png" />
-                      <Card.Body>
-                        <Card.Title className="fw-bold">{product.nombre}</Card.Title>
+                  <div key={product.receta_id} className="col">
+                    <div className="card">
+                      <img
+                        src="https://res.cloudinary.com/dq5gjc26f/image/upload/v1700657792/croissant_ttac8y.png"
+                        className="card-img-top"
+                        alt="Product"
+                      />
+                      <div className="card-body">
+                        <h5 className="card-title fw-bold">{product.nombre}</h5>
                         <div className="unidades-add">
                           <p className="card-text">
-                            {product.cantidad_inventario} {product.unidad_medida}
+                            {product.cantidad_inventario}{" "}
+                            {product.unidad_medida}
                           </p>
-                          <p className="card-text">Alert When: {product.cantidad_inventario_minimo}</p>
-                          <p className="card-text">Classification: {product.clasificacion}</p>  
-                          <Row>
-                          <Col className="col-6"><EditProductButton product={product} onProductEdited={handleProductEdited} /> </Col>
-                          <Col className="col-6"><DeleteProductButton product={product} onProductDeleted={handleProductDeleted} /> </Col>
-                          </Row>
+                          <p className="card-text">
+                            Alert When: {product.cantidad_inventario_minimo}
+                          </p>
+                          <p className="card-text">
+                            Classification: {product.clasificacion}
+                          </p>
+                          <div className="row">
+                            <div className="col-6">
+                              <EditProductButton
+                                product={product}
+                                onProductEdited={handleProductEdited}
+                              />
+                            </div>
+                            <div className="col-6">
+                              <DeleteProductButton
+                                product={product}
+                                onProductDeleted={handleProductDeleted}
+                              />
+                            </div>
+                          </div>
                         </div>
-                      </Card.Body>
-                    </Card>
-                  </Col>
+                      </div>
+                    </div>
+                  </div>
                 ))}
-              </Row>
+              </div>
             </div>
           </div>
-        </Col>
-      </Row>
-    </Container>
+        </div>
+      </div>
+    </div>
   );
 };
 

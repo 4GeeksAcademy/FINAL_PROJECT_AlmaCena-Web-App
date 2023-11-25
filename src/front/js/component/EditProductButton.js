@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Button, Modal, Form } from "react-bootstrap";
 
 const EditProductButton = ({ product, onProductEdited }) => {
   const [show, setShow] = useState(false);
@@ -50,54 +49,67 @@ const EditProductButton = ({ product, onProductEdited }) => {
 
   return (
     <>
-      <Button variant="warning" onClick={handleShow}>
-      <i className="fa-regular fa-pen-to-square"></i><span className="text-white ps-2 texto-boton">Edit</span>
-      </Button>
+      <button className="btn btn-warning">
+        <i className="far fa-edit"></i><span className="text-white ps-2 texto-boton" onClick={handleShow}>Edit</span>
+      </button>
 
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Edit Product</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group controlId="formCantidadInventario">
-              <Form.Label>Quantity in Storage</Form.Label>
-              <Form.Control
-                type="number"
-                placeholder="Enter cantidad inventario"
-                value={cantidadInventario}
-                onChange={(e) => setCantidadInventario(e.target.value)}
-              />
-            </Form.Group>
-            <Form.Group controlId="formClasificacion">
-              <Form.Label>Classification</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter clasificacion"
-                value={clasificacion}
-                onChange={(e) => setClasificacion(e.target.value)}
-              />
-            </Form.Group>
-            <Form.Group controlId="formCantidadInventarioMinimo">
-              <Form.Label>Alert Me When I Have</Form.Label>
-              <Form.Control
-                type="number"
-                placeholder="Enter cantidad inventario mínimo"
-                value={cantidadInventarioMinimo}
-                onChange={(e) => setCantidadInventarioMinimo(e.target.value)}
-              />
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleEditProduct}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      {show && (
+        <div className="modal fade show" tabIndex="-1" role="dialog" style={{ display: 'block' }}>
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Edit Product</h5>
+                <button type="button" className="btn-close" onClick={handleClose}></button>
+              </div>
+              <div className="modal-body">
+                <form>
+                  <div className="mb-3">
+                    <label htmlFor="formCantidadInventario" className="form-label">Quantity in Storage</label>
+                    <input
+                      type="number"
+                      className="form-control"
+                      id="formCantidadInventario"
+                      placeholder="Enter cantidad inventario"
+                      value={cantidadInventario}
+                      onChange={(e) => setCantidadInventario(e.target.value)}
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label htmlFor="formClasificacion" className="form-label">Classification</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="formClasificacion"
+                      placeholder="Enter clasificacion"
+                      value={clasificacion}
+                      onChange={(e) => setClasificacion(e.target.value)}
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label htmlFor="formCantidadInventarioMinimo" className="form-label">Alert Me When I Have</label>
+                    <input
+                      type="number"
+                      className="form-control"
+                      id="formCantidadInventarioMinimo"
+                      placeholder="Enter cantidad inventario mínimo"
+                      value={cantidadInventarioMinimo}
+                      onChange={(e) => setCantidadInventarioMinimo(e.target.value)}
+                    />
+                  </div>
+                </form>
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" onClick={handleClose}>
+                  Close
+                </button>
+                <button type="button" className="btn btn-primary" onClick={handleEditProduct}>
+                  Save Changes
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };

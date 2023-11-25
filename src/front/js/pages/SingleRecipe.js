@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import AlmaCenaSidebar from "../component/AlmaCenaSidebar";
-import { Container, Row, Col, Table, Button, Spinner, Modal } from "react-bootstrap";
 import "../../styles/singlerecipe.css";
-
 
 const SingleRecipe = () => {
   const navigate = useNavigate();
@@ -23,7 +21,7 @@ const SingleRecipe = () => {
             Authorization: `Bearer ${localStorage.getItem("jwt-token")}`
           }
         });
-        if (response.status == 401) { navigate("/login"); }
+        if (response.status === 401) { navigate("/login"); }
         if (!response.ok) {
           throw new Error("Failed to fetch recipe");
         }
@@ -71,28 +69,27 @@ const SingleRecipe = () => {
   }
 
   return (
-    <Container fluid>
-      <Row>
-        <Col md={4} lg={2} className="p-0 m-0" id="reduccion">
+    <div className="container-fluid">
+      <div className="row">
+        <div className="col-md-4 col-lg-2 p-0 m-0" id="reduccion">
           <AlmaCenaSidebar />
-        </Col>
-        <Col md={8} lg={10} className="gris" id="reduccion-uno">
-          <Row className="boton-categories">
-            <Col sm={12} md={6}>
+        </div>
+        <div className="col-md-8 col-lg-10 gris" id="reduccion-uno">
+          <div className="boton-categories row">
+            <div className="col-sm-12 col-md-6">
               <h3 className="titulo-single-recipe">{loading || !recipe ? "Loading..." : recipe.nombre}</h3>
-            </Col>
-
-          </Row>
-          {loading && <Spinner animation="border" />}
+            </div>
+          </div>
+          {loading && <div className="spinner-border" role="status"></div>}
           {error && <p className="text-danger">{error}</p>}
           {!loading && !error && recipe && (
             <div className="profile-user bg-white">
               <h4 className="personal">Recipe information</h4>
-              <Row className="foto">
-                <Col sm={12} md={4} className="imgsinglerecipe" style={{ backgroundImage: `url(https://res.cloudinary.com/dq5gjc26f/image/upload/v1700657798/singlerecipe_yq1zmt.png)` }}></Col>
-                <Col sm={12} md={8}>
+              <div className="foto row">
+                <div className="col-sm-12 col-md-4 imgsinglerecipe" style={{ backgroundImage: `url(https://res.cloudinary.com/dq5gjc26f/image/upload/v1700657798/singlerecipe_yq1zmt.png)` }}></div>
+                <div className="col-sm-12 col-md-8">
                   <div className="table-totalyield">
-                    <Table className="table single recipe">
+                    <table className="table single recipe">
                       <thead>
                         <tr>
                           <th className="threcipe">Total Yield</th>
@@ -105,10 +102,10 @@ const SingleRecipe = () => {
                           <td className="tdsinglerecipe">{recipe.unidad_medida_rinde}</td>
                         </tr>
                       </tbody>
-                    </Table>
+                    </table>
                   </div>
                   <div className="table-ingredients">
-                    <Table className="table single recipe">
+                    <table className="table single recipe">
                       <thead>
                         <tr>
                           <th className="threcipe">Qty</th>
@@ -125,35 +122,37 @@ const SingleRecipe = () => {
                           </tr>
                         ))}
                       </tbody>
-                    </Table>
-                    <Col sm={12} className="mt-5" >
-                      <Button variant="primary" onClick={handleMakeRecipe} disabled={loading || !recipe}>
-                        {loading ? <Spinner animation="border" size="sm" /> : "Make Recipe"}
-                      </Button>
-                    </Col>
+                    </table>
+                    <div className="mt-5 col-sm-12">
+                      <button className="btn btn-primary" onClick={handleMakeRecipe} disabled={loading || !recipe}>
+                        {loading ? <div className="spinner-border spinner-border-sm" role="status"></div> : "Make Recipe"}
+                      </button>
+                    </div>
                   </div>
-                </Col>
-              </Row>
+                </div>
+              </div>
               {/* Modal */}
-              <Modal show={showModal} onHide={() => setShowModal(false)}>
-                <Modal.Header closeButton>
-                  <Modal.Title>Recipe Made</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                  Your inventory and products have been updated.
-                </Modal.Body>
-                <Modal.Footer>
-                  <Button variant="primary" onClick={() => setShowModal(false)}>
-                    Close
-                  </Button>
-                </Modal.Footer>
-              </Modal>
+              <div className="modal fade" tabIndex="-1" role="dialog" show={showModal} onHide={() => setShowModal(false)}>
+                <div className="modal-dialog" role="document">
+                  <div className="modal-content">
+                    <div className="modal-header">
+                      <h5 className="modal-title">Recipe Made</h5>
+                      <button type="button" className="btn-close" data-dismiss="modal" aria-label="Close" onClick={() => setShowModal(false)}></button>
+                    </div>
+                    <div className="modal-body">
+                      Your inventory and products have been updated.
+                    </div>
+                    <div className="modal-footer">
+                      <button type="button" className="btn btn-primary" onClick={() => setShowModal(false)}>Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           )}
-        </Col>
-
-      </Row>
-    </Container>
+        </div>
+      </div>
+    </div>
   );
 };
 

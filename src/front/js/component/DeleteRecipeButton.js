@@ -1,152 +1,69 @@
-import React, { useState, useEffect } from 'react';
-import { Button, Modal, Form } from 'react-bootstrap';
+import React, { useState } from "react";
 
-const CreateProductButton = ({ onProductCreated }) => {
-  const [showModal, setShowModal] = useState(false);
-  const [formData, setFormData] = useState({
-    receta_nombre: '',
-    cantidad_inventario: 0,
-    clasificacion: '',
-    cantidad_inventario_minimo: 0
-  });
-  const [recipeList, setRecipeList] = useState([]);
+const DeleteRecipeButton = ({ recipe, onRecipeDeleted }) => {
+  const [show, setShow] = useState(false);
 
-  useEffect(() => {
-    fetchRecipes();
-  }, []); 
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
-  const fetchRecipes = async () => {
+  const handleDeleteRecipe = async () => {
     try {
-      const response = await fetch(process.env.BACKEND_URL + "/dashboard/recipes", {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("jwt-token")}`
+      const response = await fetch(
+        `${process.env.BACKEND_URL}/dashboard/recipes/${recipe.receta_id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("jwt-token")}`,
+          },
         }
-      });
+      );
 
       if (!response.ok) {
-        throw new Error("Error fetching recipes");
+        throw new Error("Error deleting recipe");
       }
-
-      const recipes = await response.json();
-      setRecipeList(recipes);
-    } catch (error) {
-      console.error("Error fetching recipes:", error);
-    }
-  };
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
-  };
-
-  const handleSubmit = async () => {
-    try {
-      const response = await fetch(process.env.BACKEND_URL + "/dashboard/products", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("jwt-token")}`
-        },
-        body: JSON.stringify(formData)
-      });
-
-      if (!response.ok) {
-        throw new Error("Error creating product");
-      }
-
-      const productData = await response.json();
 
       handleClose();
 
-      if (onProductCreated) {
-        onProductCreated(productData);
+      if (onRecipeDeleted) {
+        onRecipeDeleted();
       }
     } catch (error) {
-      console.error("Error creating product:", error);
+      console.error("Error deleting recipe:", error);
     }
-  };
-
-  const handleClose = () => {
-    setShowModal(false);
   };
 
   return (
     <>
-      <Button variant="primary" onClick={() => setShowModal(true)}>
-        New Product
-      </Button>
+      <button className="btn btn-danger delete-recipe" onClick={handleShow}>
+        <i className="far fa-trash-alt"></i>
+      </button>
 
-      <Modal show={showModal} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>New Product</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group controlId="formRecetaNombre">
-              <Form.Label>Product Name</Form.Label>
-              <Form.Control
-                as="select"
-                name="receta_nombre"
-                value={formData.receta_nombre}
-                onChange={handleInputChange}
-              >
-                <option value="" disabled>
-                  Select one Recipe Name
-                </option>
-                {recipeList.map((recipe) => (
-                  <option key={recipe.id} value={recipe.nombre}>
-                    {recipe.nombre}
-                  </option>
-                ))}
-              </Form.Control>
-            </Form.Group>
-            <Form.Group controlId="formCantidadInventario">
-              <Form.Label>Quantity in Storage</Form.Label>
-              <Form.Control
-                type="number"
-                placeholder="Cantidad en inventario"
-                name="cantidad_inventario"
-                value={formData.cantidad_inventario}
-                onChange={handleInputChange}
-              />
-            </Form.Group>
-            <Form.Group controlId="formClasificacion">
-              <Form.Label>Classification</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Clasificación del producto"
-                name="clasificacion"
-                value={formData.clasificacion}
-                onChange={handleInputChange}
-              />
-            </Form.Group>
-            <Form.Group controlId="formCantidadInventarioMinimo">
-              <Form.Label>Alert Me When I Have</Form.Label>
-              <Form.Control
-                type="number"
-                placeholder="Cantidad mínima en inventario"
-                name="cantidad_inventario_minimo"
-                value={formData.cantidad_inventario_minimo}
-                onChange={handleInputChange}
-              />
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleSubmit}>
-            Create
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      {show && (
+        <div className="modal fade show" tabIndex="-1" role="dialog" style={{ display: 'block' }}>
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Delete Recipe</h5>
+                <button type="button" className="btn-close" onClick={handleClose}></button>
+              </div>
+              <div className="modal-body">
+                <p>Are you sure you want to delete {recipe.nombre}?</p>
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" onClick={handleClose}>
+                  Cancel
+                </button>
+                <button type="button" className="btn btn-danger" onClick={handleDeleteRecipe}>
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };
 
-export default CreateProductButton;
+export default DeleteRecipeButton;
